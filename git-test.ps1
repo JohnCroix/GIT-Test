@@ -18,10 +18,11 @@ IF ($(git diff).count -ge 0){
         git add ".\$($_.Name)"
     }
     git commit -m "$($($(git log) -match "Author").count+1) commit by $($env:Username) $(get-date)"
+    #Upload
+    git push --all -q
 }
 
-#Upload
-git push --all -q
+
 
 <#
 echo "# Git-Test" >> README.md
