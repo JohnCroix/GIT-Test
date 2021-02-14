@@ -27,14 +27,3 @@ IF ($(git diff | Measure-Object).Count -ge 4){
     #Upload
     git push --all -q
 }
-
-
-<#
-echo "# Git-Test" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/JohnCroix/Git-Test.git
-git push -u origin main
-#>
