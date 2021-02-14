@@ -13,7 +13,9 @@ echo "# Git-Test" | Out-File README.md
 get-date | Out-File .\README.md -Append
 
 # compare changes with remote repo
-IF ($(git diff | Measure-Object).Count -ge 1){
+$x = $(git diff | Measure-Object).Count
+IF ($x -ge 1){
+    $x
     Write-Host "[i] change detected"
     Get-ChildItem | %{
         git add ".\$($_.Name)"
