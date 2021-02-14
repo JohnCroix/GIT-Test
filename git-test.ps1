@@ -18,11 +18,10 @@ IF ($(git diff | Measure-Object).Count -ge 4){
     Get-ChildItem | %{
         git add ".\$($_.Name)"
     }
-    git commit -m "$($($(git log) -match "Author").count+1) commit by $($env:Username) $(get-date)"
+    git commit -m "commit $($($(git log) -match "Author").count+1) by $($env:Username)"
     #Upload
     git push --all -q
 }
-
 
 
 <#
