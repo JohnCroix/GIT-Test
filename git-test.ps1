@@ -13,7 +13,8 @@ echo "# Git-Test" | Out-File README.md
 get-date | Out-File .\README.md -Append
 
 # compare changes with remote repo
-IF ($(git diff).count -ge 0){
+IF ($(git diff).count -ne 0){
+    "xxxxxxxxxxxxxxxxx"
     Get-ChildItem | %{
         git add ".\$($_.Name)"
     }
@@ -22,7 +23,7 @@ IF ($(git diff).count -ge 0){
     git push --all -q
 }
 
-
+rr
 
 <#
 echo "# Git-Test" >> README.md
