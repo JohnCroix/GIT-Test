@@ -14,6 +14,7 @@ get-date | Out-File .\README.md -Append
 
 # compare changes with remote repo
 $x = $(git diff | Measure-Object).Count
+git diff 
 IF ($x -ge 1){
     $x
     Write-Host "[i] change detected"
