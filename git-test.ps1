@@ -17,7 +17,7 @@ IF ($(git diff).count -ge 0){
     Get-ChildItem | %{
         git add ".\$($_.Name)"
     }
-    git commit -m "$($env:Username) $(get-date)"
+    git commit -m "$($($(git log) -match "Author").count+1) commit by $($env:Username) $(get-date)"
 }
 
 #Upload
