@@ -9,7 +9,7 @@ IF (!(Test-Path .\.git)){
 }
 
 # create changes
-echo "# Git-Test" >> README.md
+echo "# Git-Test" | Out-File README.md
 get-date | Out-File .\README.md -Append
 
 # compare changes with remote repo
