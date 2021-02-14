@@ -1,12 +1,12 @@
-# GIT CONFIG
-git config remote.origin.url "https://github.com/JohnCroix/Git-Test.git"
-git config --global user.email "johannes@croix.at"
-git config --global user.name "$($env:Username)"
-
 IF (!(Test-Path .\.git)){
     #Create an empty Git repository or reinitialize an existing one
     git init
 }
+
+# GIT CONFIG
+git config remote.origin.url "https://github.com/JohnCroix/Git-Test.git"
+git config --global user.email "johannes@croix.at"
+git config --global user.name "$($env:Username)"
 
 # create changes
 echo "# Git-Test" | Out-File README.md
