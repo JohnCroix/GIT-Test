@@ -1,15 +1,20 @@
+$RemoteOriginUrl = "https://github.com/JohnCroix/Git-Test.git"
+$UserName = "$($env:Username)"
+$UserMail = "dev@croix.at"
+$ProjectName = "Git-Test"
+
 IF (!(Test-Path .\.git)){
     #Create an empty Git repository or reinitialize an existing one
     git init
 }
 
 # GIT CONFIG
-git config remote.origin.url "https://github.com/JohnCroix/Git-Test.git"
-git config --global user.email "johannes@croix.at"
-git config --global user.name "$($env:Username)"
+git config remote.origin.url $RemoteOriginUrl
+git config --global user.email $UserMail
+git config --global user.name $UserName
 
 # create changes
-echo "# Git-Test" | Out-File README.md
+echo "# $($ProjectName)" | Out-File README.md
 get-date | Out-File .\README.md -Append
 
 # compare changes with remote repo
@@ -18,7 +23,7 @@ IF ($(git diff | Measure-Object).Count -ge 4){
     Get-ChildItem | %{
         git add ".\$($_.Name)"
     }
-    git commit -m "commit $($($(git log) -match "Author").count+1) by $($env:Username)"
+    git commit -m "commit $($($(git log) -match "Author").count+1) by $($UserName)"
     #Upload
     git push --all -q
 }
