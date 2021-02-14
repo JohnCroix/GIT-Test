@@ -3,8 +3,8 @@ $UserName = "$($env:Username)"
 $UserMail = "dev@croix.at"
 $ProjectName = "Git-Test"
 
+#Create an empty Git repository or reinitialize an existing one
 IF (!(Test-Path .\.git)){
-    #Create an empty Git repository or reinitialize an existing one
     git init
 }
 
@@ -24,6 +24,5 @@ IF ($(git diff | Measure-Object).Count -ge 4){
         git add ".\$($_.Name)"
     }
     git commit -m "commit $($($(git log) -match "Author").count+1) by $($UserName)"
-    #Upload
     git push --all -q
 }
